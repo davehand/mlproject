@@ -63,18 +63,18 @@
 ]
 
 \begin{abstract}
-In this report, we present a simplified stock recommendation system. This system is based on patterns found from several features, including the price and volume history, of a list of equities and utilizes various machine learning techniques to try to predict which stocks should be bought or sold to maximize return on investment going forward.  We chose to employ neural networks, support vector machines with a gaussian kernel, and naive bayes as our main machine learning techniques. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, and recall of various models.
+In this report, we present a simplified stock recommendation system. This system is based on patterns found from several features including the price and volume history of a list of equities. It utilizes various machine learning techniques to try to predict which stocks should be bought or sold to maximize return on investment going forward.  We chose to employ neural networks, support vector machines with a gaussian kernel, and naive bayes as our main machine learning techniques. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, and recall of various models.
 \end{abstract}
 
 \section{Introduction}
-Many financial institutions and investors are wary of trading in the Stock Market since the financial collapse in 2008.  Almost all financial institutions have turned to machine learning or other algorithmic techniques in order to reduce the risk in trading. These techniques are used both in high-frequency trading and longer-term trades based on a buy and hold strategy. Our system is targeted as a longer-term trade recommendation system, avoiding the real-time constraings of high-frequency algorithms. We attempt to solve a small subset of this larger financial landscape, making good short-term predictions for buying or selling stocks that the average investor might be able to utilize.
+Many financial institutions and investors are wary of trading in the stock market since the financial collapse in 2008.  Almost all financial institutions have turned to machine learning or other algorithmic techniques in order to reduce the risk in trading. These techniques are used both in high-frequency trading and longer-term trades based on a buy and hold strategy. Our system is targeted as a longer-term trade recommendation system, avoiding the real-time constraints of high-frequency algorithms. We attempt to solve a small subset of this larger financial landscape, making good short-term predictions for buying or selling stocks that the average investor might be able to utilize.
 
 The principle of our trading strategy is based on the idea that price movements in a stock form technical patterns that represent the sentiment of a particular equity over time. These patterns can help predict the future price movement of a stock, which if known, can improve the overall return for an investor.  In order to simplify our recommendation model we have limited our selection to the stocks in the Dow 30 and only look at closing price for the stocks in our list as the basis of our predictions.  Also, in order to avoid the complication of taxes and trading costs we decided to subtract a flat 0.5\% from each trade made.
 
 \subsection{Model assumptions}
-In our implementation, we make several assumptions to simplify the constraints. We believe that while these assumptions necessarily make the algorithms we develop less applicable to the real world, they are still not too far off from reality, and could potentially be used by individuals in the real world at some success, but at their own risk. We will first assume that the trader has both cash and shares of stocks. We can calculate the value of the trader’s portfolio at any time. We can also calculate the rate of return of any investment the trader has made from the time it started to present time.
+In our implementation, we make several assumptions to simplify the constraints. We believe that while these assumptions necessarily make the algorithms we develop less applicable to the real world, they are still not too far off from reality, and could potentially be used by individuals in the real world at some success, but at their own risk. We will first assume that the trader has both cash and shares of stocks. We can calculate the value of the trader's portfolio at any time. We can also calculate the rate of return of any investment the trader has made from the time it started to present time.
 
-An additional assumption will be that the closing price reflects the sentiment of that day’s price action enough to be considered the price for the entire day. This has the added benefit of avoiding intraday fluctuations in the stock market. We will also ignore all transaction fees and taxes associated with trading on the stock market and simply use a flat fee of 0.5\%.
+An additional assumption will be that the closing price reflects the sentiment of that day's price action enough to be considered the price for the entire day. This has the added benefit of avoiding intraday fluctuations in the stock market. We will also ignore all transaction fees and taxes associated with trading on the stock market and simply use a flat fee of 0.5\%.
 
 \subsection{Definitions}
 
@@ -83,7 +83,7 @@ Port.Value (V) = Cash + (num Shares*stock Value)
 $$
 
 $$
-ROI = \frac{(V_{now} - V_{beginning}}{V_{beginning}}
+ROI = \frac{(V_{now} - V_{beginning})}{V_{beginning}}
 $$
 
 \section{Methodology}
@@ -98,11 +98,11 @@ It was necessary to normalize our data across different stocks so volume and pri
 
 The strategy is to buy or sell a stock from the collection of stocks we follow within the Dow 30 and based on patterns or trends our models find, execute a trade  at a given period of time or until our predicted price target is hit. Alternatively, our prediction is wrong and we exit our position with a stop loss set to 2\%. This is to minimize our potential loss when we are wrong and maximize our profit when we're correct.
 
-\section{Results (Progress so far)}
+\section{Progress so far}
 
 \subsection{Backtesting}
 
-We have written a module to look at different slices of time and different feature sets in our historical trades data. We have also implemented pattern recognition in our backtesting code to confirm that there are trends on a daily basis that we could explout.
+We have written a module to look at different slices of time and different feature sets in our historical trades data. We have also implemented pattern recognition in our backtesting code to confirm that there are trends on a daily basis that we could exploit.
 
 Section 3.5 shows some example patterns that our system found with the current pattern in cyan.   The other lines are past patterns that our system found that are potential matches and the dots to the right represent outcomes for each past pattern.  The rightmost dots are the actual outcome and average of the past patterns.
 
@@ -118,7 +118,7 @@ So far we've evaluated a boosted decision tree and SVMs with polynomial, gaussia
 
 \subsection{Future Work}
 
-Next, we plan to evaluate additional classifiers, including a neural network and naive Bayes, with similar baseline variables for data and features.
+Next, we plan to evaluate additional classifiers, including a neural network and naive bayes, with similar baseline variables for data and features.
 
 As a stretch goal, we are also still trying to find additional sources of data to incorporate additional economic features into our dataset.
 
