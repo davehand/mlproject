@@ -1,8 +1,36 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chase~Lochmiller(2013)]{lochmiller}
+Chase~Lochmiller, Yuan~Chen.
+\newblock Predicting short term stock returns.
+\newblock Technical report, Stanford University, 2013.
+
+\bibitem[Chenxu~Shao(2013)]{shaozheng}
+Chenxu~Shao, Zheming~Zheng.
+\newblock Algorithmic trading using machine learning techniques.
+\newblock Technical report, Department of Management Science and Engineering,
+  2013.
+
+\bibitem[Lin(2013)]{lin}
+Lin, Hui.
+\newblock Feature investigation for stock market prediction.
+\newblock Technical report, Stanford University, 2013.
+
+\bibitem[Shunrong~Shen(2012)]{shenjiang}
+Shunrong~Shen, Haomiao~Jiang, Tongda~Zhang.
+\newblock Stock market forecasting using machine learning algorithms.
+\newblock Technical report, Department of Electrical Engineering, Stanford
+  University, 2012.
+
+\bibitem[Tianxin~Dai(2012)]{daishah}
+Tianxin~Dai, Arpan~Shah, Hongxia~Zhong.
+\newblock Automated stock trading using machine learning algorithms.
+\newblock Technical report, Department of Management Science and Engineering,
+  2012.
 
 \end{thebibliography}
