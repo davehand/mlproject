@@ -128,6 +128,8 @@ INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmro7t.tfm
 INPUT figure_3.png
 INPUT ./figure_3.png
 INPUT ./figure_3.png
+INPUT status-omearastephanihand.bbl
+INPUT status-omearastephanihand.bbl
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmro7t.vf
