@@ -1,0 +1,220 @@
+AXP Accuracy = 0.64
+AXP Precision = 0.4096
+AXP Recall = 0.64
+Total Return: 26.9402354979
+Percent return: 36.0549190282
+Successful trades: 64
+IBM Accuracy = 0.72
+IBM Precision = 0.5184
+IBM Recall = 0.72
+Total Return: 78.2856406027
+Percent return: 38.9093641166
+Successful trades: 72
+CVX Accuracy = 0.81
+CVX Precision = 0.6561
+CVX Recall = 0.81
+Total Return: 48.3479175183
+Percent return: 40.3000062668
+Successful trades: 81
+CSCO Accuracy = 0.63
+CSCO Precision = 0.492476190476
+CSCO Recall = 0.63
+Total Return: 7.55213935077
+Percent return: 31.4803641133
+Successful trades: 63
+DD Accuracy = 0.7
+DD Precision = 0.49
+DD Recall = 0.7
+Total Return: 17.632412248
+Percent return: 32.5141291684
+Successful trades: 70
+V Accuracy = 0.49
+V Precision = 0.368763052209
+V Recall = 0.49
+Total Return: 56.9743045682
+Percent return: 31.8025720058
+Successful trades: 49
+BA Accuracy = 0.52
+BA Precision = 0.281224489796
+BA Recall = 0.52
+Total Return: 31.4206069853
+Percent return: 31.1465176302
+Successful trades: 52
+CAT Accuracy = 0.69
+CAT Precision = 0.487878787879
+CAT Recall = 0.69
+Total Return: 28.6604470046
+Percent return: 34.4435128045
+Successful trades: 69
+VZ Accuracy = 0.62
+VZ Precision = 0.3844
+VZ Recall = 0.62
+Total Return: 19.1796709188
+Percent return: 38.4362142662
+Successful trades: 62
+MSFT Accuracy = 0.61
+MSFT Precision = 0.3721
+MSFT Recall = 0.61
+Total Return: 10.3790712227
+Percent return: 29.6544892078
+Successful trades: 61
+DIS Accuracy = 0.58
+DIS Precision = 0.345656565657
+DIS Recall = 0.58
+Total Return: 17.2950220977
+Percent return: 27.4567742463
+Successful trades: 58
+INTC Accuracy = 0.66
+INTC Precision = 0.624631578947
+INTC Recall = 0.66
+Total Return: 8.77144278866
+Percent return: 35.8603548187
+Successful trades: 66
+PG Accuracy = 0.73
+PG Precision = 0.5329
+PG Recall = 0.73
+Total Return: 29.0823881852
+Percent return: 37.4773043623
+Successful trades: 73
+SPC Accuracy = 0.64
+SPC Precision = 0.673319148936
+SPC Recall = 0.64
+Total Return: 15.1054187608
+Percent return: 40.8254561104
+Successful trades: 64
+HD Accuracy = 0.66
+HD Precision = 0.446666666667
+HD Recall = 0.66
+Total Return: 22.2034497856
+Percent return: 29.0621070493
+Successful trades: 66
+C Accuracy = 0.52
+C Precision = 0.278383838384
+C Recall = 0.52
+Total Return: 12.9816440589
+Percent return: 26.2573706693
+Successful trades: 52
+GS Accuracy = 0.54
+GS Precision = 0.43152173913
+GS Recall = 0.54
+Total Return: 46.0766546702
+Percent return: 28.4669805203
+Successful trades: 54
+STA Accuracy = 0.76
+STA Precision = 0.5776
+STA Recall = 0.76
+Total Return: 18.4379671455
+Percent return: 41.0462314014
+Successful trades: 76
+G Accuracy = 0.72
+G Precision = 0.5184
+G Recall = 0.72
+Total Return: 15.8703847257
+Percent return: 31.3025339758
+Successful trades: 72
+WMT Accuracy = 0.83
+WMT Precision = 0.6889
+WMT Recall = 0.83
+Total Return: 27.4834873573
+Percent return: 36.7229921931
+Successful trades: 83
+GE Accuracy = 0.74
+GE Precision = 0.5476
+GE Recall = 0.74
+Total Return: 9.71314485844
+Percent return: 41.3325313125
+Successful trades: 74
+T Accuracy = 0.67
+T Precision = 0.460202020202
+T Recall = 0.67
+Total Return: 12.1761399438
+Percent return: 34.1834361141
+Successful trades: 67
+MRK Accuracy = 0.84
+MRK Precision = 0.7056
+MRK Recall = 0.84
+Total Return: 17.8209366303
+Percent return: 37.7162680006
+Successful trades: 84
+UNH Accuracy = 0.64
+UNH Precision = 0.4096
+UNH Recall = 0.64
+Total Return: 23.4488289452
+Percent return: 36.7363762262
+Successful trades: 64
+JPM Accuracy = 0.65
+JPM Precision = 0.426767676768
+JPM Recall = 0.65
+Total Return: 17.393877145
+Percent return: 32.7075538642
+Successful trades: 65
+UTX Accuracy = 0.63
+UTX Precision = 0.3969
+UTX Recall = 0.63
+Total Return: 26.1784826578
+Percent return: 28.2460969549
+Successful trades: 63
+XOM Accuracy = 0.85
+XOM Precision = 0.7225
+XOM Recall = 0.85
+Total Return: 43.3194514118
+Percent return: 48.272176746
+Successful trades: 85
+TRV Accuracy = 0.46
+TRV Precision = 0.451224489796
+TRV Recall = 0.46
+Total Return: 1.62974886465e+20
+Percent return: 1.80003188055e+20
+Successful trades: 46
+PFE Accuracy = 0.76
+PFE Precision = 0.5776
+PFE Recall = 0.76
+Total Return: 11.5094678297
+Percent return: 40.4835308819
+Successful trades: 76
+NKE Accuracy = 0.68
+NKE Precision = 0.4624
+NKE Recall = 0.68
+Total Return: 17.9466191859
+Percent return: 29.2242618237
+Successful trades: 68
+MCD Accuracy = 0.9
+MCD Precision = 0.81
+MCD Recall = 0.9
+Total Return: 48.1251267909
+Percent return: 48.9873033295
+Successful trades: 90
+KO Accuracy = 0.82
+KO Precision = 0.6724
+KO Recall = 0.82
+Total Return: 17.1700054249
+Percent return: 42.5105358378
+Successful trades: 82
+MMM Accuracy = 0.79
+MMM Precision = 0.6241
+MMM Recall = 0.79
+Total Return: 44.6440713739
+Percent return: 40.9465939411
+Successful trades: 79
+SBC Accuracy = 0.82
+SBC Precision = 0.6724
+SBC Recall = 0.82
+Total Return: 10.5469798649
+Percent return: 45.3633542575
+Successful trades: 82
+JNJ Accuracy = 0.78
+JNJ Precision = 0.6084
+JNJ Recall = 0.78
+Total Return: 31.8944035157
+Percent return: 38.0874176209
+Successful trades: 78
+
+
+Overall Results Trained on all 30 Stocks of the Dow:
+-----------------------------------------------------
+NeuralNet Accuracy = 0.78
+NeuralNet Precision = 0.6084
+NeuralNet Recall = 0.78
+Total Return: 31.8944035157
+Percent return: 38.0874176209
+Successful trades: 78

@@ -124,11 +124,53 @@ truePercentChg = []
 mfield = 'price'
 
 # for ticker in dow30:
+#     patternAr = []
+#     performanceAr = []
+#     patternPrice = []
+#     performancePrice = []
+#     truePercentChg = []
+#
 #     patternStorage(ticker, mfield)
+#     n = int(len(patternAr) * 0.5)
+#     patternAr = np.array(patternAr)
+#     performanceAr = np.array(performanceAr)
+#     model = svm.SVC(kernel='rbf', C=1.1, gamma=0.011)
+#     model.fit(patternAr[0:n], performanceAr[0:n])
+#
+#     n = len(patternAr) - 100
+#
+#     ypred = model.predict(patternAr[n:])
+#     accuracy = accuracy_score(performanceAr[n:], ypred)
+#     precision = precision_score(performanceAr[n:], ypred)
+#     recall = recall_score(performanceAr[n:], ypred)
+#
+#     print ticker,"Accuracy = "+str(accuracy)
+#     print ticker,"Precision = "+str(precision)
+#     print ticker,"Recall = "+str(recall)
+#
+#     result = performanceAr[n:]
+#     patternResult = patternAr[n:]
+#     prices = performancePrice[n:]
+#     percent = truePercentChg[n:]
+#     successfulTrades = 0
+#     profit = prices[0]
+#     current_percent = 0
+#
+#     for i in range(len(ypred)):
+#         if result[i] == ypred[i]:
+#             profit += profit * abs(percent[i]/100.0)
+#             successfulTrades += 1
+#
+#     print 'Total Return:',(profit - prices[0])
+#     print 'Percent return:',((profit-prices[0])/prices[0])*100
+#     print 'Successful trades:',successfulTrades
 
+
+for ticker in dow30:
+    patternStorage(ticker, mfield)
 
 # patternStorage('NKE', mfield)
-patternStorage('DIS', mfield)
+# patternStorage('DIS', mfield)
 # patternStorage('MMM', mfield)
 # patternStorage('UNH', mfield)
 # patternStorage('INTC', mfield)
@@ -139,7 +181,7 @@ patternStorage('DIS', mfield)
 # print 'output nodes:',len(np.unique(performanceAr))
 
 n = int(len(patternAr) * 0.5)
-print n
+# print n
 
 patternAr = np.array(patternAr)
 
@@ -148,15 +190,15 @@ patternAr = np.array(patternAr)
 performanceAr = np.array(performanceAr)
 
 
-gamma = np.arange(0.001,0.1,0.005)  # [.001, .01, .1, .5, 1, 10, 100]
-C = np.arange(0.1,10,0.5)  # [.01, .1, 1, 10, 50, 100, 250, 500, 1000]
-
-parameters = {'kernel':['rbf'], 'C':C, 'gamma':gamma}
-svr = svm.SVC()
-#model = grid_search.GridSearchCV(svr, parameters)
+# gamma = np.arange(0.001,0.1,0.005)  # [.001, .01, .1, .5, 1, 10, 100]
+# C = np.arange(0.1,10,0.5)  # [.01, .1, 1, 10, 50, 100, 250, 500, 1000]
+#
+# parameters = {'kernel':['rbf'], 'C':C, 'gamma':gamma}
+# svr = svm.SVC()
+# #model = grid_search.GridSearchCV(svr, parameters)
 model = svm.SVC(kernel='rbf', C=1.1, gamma=0.011)
-# model = model.fit(X_train, Y_train)
-#model = NeuralNet(np.array([43,41,43]), .70, 0.0001, 100)  # 100 @ 2.5 = 0.885, 400 @ 1.6 = 0.88, 1000 @ 1 = 0.8542,
+# # model = model.fit(X_train, Y_train)
+# #model = NeuralNet(np.array([43,41,43]), .70, 0.0001, 100)  # 100 @ 2.5 = 0.885, 400 @ 1.6 = 0.88, 1000 @ 1 = 0.8542,
 model.fit(patternAr[0:n], performanceAr[0:n])
 
 # patternAr = []
@@ -175,9 +217,9 @@ ypred = model.predict(patternAr[n:])
 #print 'Best params: ', model.best_params_
 #print 'Score: ', model.best_score_
 
-print ypred
-print performanceAr[n:]
-
+# print ypred
+# print performanceAr[n:]
+#
 accuracy = accuracy_score(performanceAr[n:], ypred)
 precision = precision_score(performanceAr[n:], ypred)
 recall = recall_score(performanceAr[n:], ypred)
@@ -191,7 +233,7 @@ print "NeuralNet Recall = "+str(recall)
 # fig = plt.figure(figsize=(10,6))
 # plt.ion()
 
-xp = range(0,int(numPointsInPattern))
+# xp = range(0,int(numPointsInPattern))
 result = performanceAr[n:]
 patternResult = patternAr[n:]
 prices = performancePrice[n:]
@@ -203,14 +245,14 @@ current_percent = 0
 for i in range(len(ypred)):
     if result[i] == ypred[i]:
         profit += profit * abs(percent[i]/100.0)
-
+        successfulTrades += 1
     # print profit
 
-    if result[i] == ypred[i]:
+    # if result[i] == ypred[i]:
     #     # print patternResult[i]
     #     # print performanceAr[i]
     #     plt.figure(successfulTrades)
-        successfulTrades += 1
+    #     successfulTrades += 1
     #     plt.scatter(numPointsInPattern+5, result[i], s=25)
     #     plt.subplot(1,2,1)
     #     plt.plot(xp, patternPrice[i], linewidth=1)
@@ -227,4 +269,4 @@ print 'Percent return:',((profit-prices[0])/prices[0])*100
 
 print 'Successful trades:',successfulTrades
 
-plt.show()
+# plt.show()
