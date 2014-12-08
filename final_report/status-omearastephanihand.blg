@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: status-omearastephanihand.aux
+The style file: icml2014.bst
+Database file #1: status-omearastephanihand.bib
+You've used 5 entries,
+            2773 wiz_defined-function locations,
+            612 strings with 5426 characters,
+and the built_in function-call counts, 1413 in all, are:
+= -- 135
+> -- 50
+< -- 5
++ -- 20
+- -- 15
+* -- 72
+:= -- 260
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 25
+chr.to.int$ -- 5
+cite$ -- 10
+duplicate$ -- 75
+empty$ -- 116
+format.name$ -- 20
+if$ -- 276
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 33
+num.names$ -- 20
+pop$ -- 30
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 56
+stack$ -- 0
+substring$ -- 10
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 55
+warning$ -- 0
+while$ -- 15
+width$ -- 0
+write$ -- 72
