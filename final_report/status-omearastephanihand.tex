@@ -11,6 +11,7 @@
 \usepackage{times}
 % For figures
 \usepackage{graphicx} % more modern
+\usepackage{booktabs}
 %\usepackage{epsfig} % less modern
 \usepackage{subfigure}
 
@@ -63,21 +64,21 @@
 ]
 
 \begin{abstract}
-In this report, we present a simplified stock recommendation system. This system is based on patterns found from the price history of a list of equities. In developing the system, various machine learning techniques were tested to try to predict which stocks should be bought or sold to maximize the percent return going forward. We chose to use neural networks, support vector machines with a gaussian kernel, and naive bayes as our main machine learning techniques. We tried a few additional models as well, such as boosted decision trees, but not as extensively. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, and recall of various models.
+In this report, we present a simplified stock recommendation system. This system is based on patterns found from the price history of a list of equities. In developing the system, various machine learning techniques were tested to try to predict which stocks should be bought or sold to maximize the percent return going forward. We chose to use naive bayes, neural networks, and a support vector machines with a gaussian kernel as our main machine learning techniques. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, recall, and percent return of various models.
 \end{abstract}
 
 \section{Introduction}
 Many financial institutions and investors are wary of trading in the stock market since the financial collapse in 2008.  Almost all financial institutions have turned to machine learning or other algorithmic techniques in order to reduce the risk in trading. These techniques are used both in high-frequency trading and longer-term trades based on a buy and hold strategy. Our system is targeted as a longer-term trade recommendation system, avoiding the real-time constraints of high-frequency algorithms. We attempt to solve a small subset of this larger financial landscape, making good short-term predictions for buying or selling stocks that the average investor might be able to utilize.
 
-The principle of our trading strategy is based on the idea that price movements in a stock form technical patterns that represent the sentiment of a particular equity over time. These patterns can help predict the future price movement of a stock, which if known, can improve the overall return for an investor.  In order to simplify our recommendation model we have limited our selection to the stocks in the Dow 30 and only look at closing price for the stocks in our list as the basis of our predictions.  Also, in order to avoid the complication of taxes and trading costs we decided to subtract a flat 0.5\% from each trade made.
+The principle of our trading strategy is based on the idea that price movements in a stock form technical patterns that represent the sentiment of a particular equity over time. These patterns can help predict the future price movement of a stock, which if known, can improve the overall return for an investor.  In order to simplify our recommendation model we have limited our selection to the stocks in the Dow 30 and only look at closing price for the stocks in our list as the basis of our predictions.
 
 \subsection{Model assumptions}
-In our implementation, we make several assumptions to simplify the constraints. We believe that while these assumptions necessarily make the algorithms we develop less applicable to the real world, they still remain close to from reality. We believe that some of our models could potentially be used by individuals in the real world at some rate of success, but at their own risk. We first assume that the trader has stock in whichever stocks our model was trained on. This allows us to to predict to buy, sell, or hold regardless of whether or not the individual actually owns any stock at that current point in time. Our model can be viewed as the global prediction of whether to buy, sell, or hold on a certain day and is not related or tied to a specific portfolio.
+In our implementation, we make several assumptions to simplify the constraints. We believe that while these assumptions necessarily make the algorithms we develop less applicable to the real world, they still remain close to from reality. We believe that some of our models could potentially be used by individuals in the real world at some rate of success, but at their own risk. We first assume that the trader has stock in whichever stocks our model was trained on. This allows us to to predict whether to buy, sell, or hold regardless of whether or not the individual actually owns any stock at that current point in time. Our model can be viewed as the global prediction of whether to buy, sell, or hold on a certain day and is not related or tied to any specific trader portfolio.
 
-An additional assumption will be that the closing price reflects the sentiment of that day's price action enough to be considered the price for the entire day. This has the added benefit of avoiding intraday fluctuations in the stock market. We will also ignore all transaction fees and taxes associated with trading on the stock market and simply use a flat fee of 1.0\%.
+An additional assumption will be that the closing price reflects the sentiment of that day's price action enough to be considered the price for the entire day. This has the added benefit of avoiding intraday fluctuations in the stock market. We will also ignore all transaction fees and taxes associated with trading on the stock market and simply use a flat fee of 0.5\%.
 
 \subsection{Definition}
-Our models were compared on several different characteristics, including many base machine learning metrics. In addition, we calculated the percent return that our model would have produced if it was followed every day of the test. This was calculated so that we could compare it to the actual return of the stock over the same period of time. That way, we could empirically see that our model was outperforming the average case. The formula for calculating the percent return is below:
+Our models were compared on several different characteristics, including many baseline machine learning metrics. In addition, we calculated the percent return that our model would have produced if it was followed every day of the test. This was calculated so that we could compare it to the actual return of the stock over the same period of time. That way, we could empirically see that our model was outperforming the average case. The formula for calculating the percent return is:
 
 $$
 Percent Return = \frac{(V_{now} - V_{beginning})}{V_{beginning}}
@@ -86,14 +87,14 @@ $$
 \section{Methodology}
 
 \subsection{Source of data}
-The dataset used was downloaded from Wharton Research Data Services (WRDS). The stocks used are the stocks that comprise the Dow30. The Dow30 is INSERT TEXT HERE. For each stock, we pulled several features, including closing price, high, low, and volume. We pulled stock data from January 1, 1983 to December 31, 2013 to give us a window of 30 years. WRDS does not currently store the data we were utilizing for 2014.
+The dataset used was downloaded from Wharton Research Data Services (WRDS). The stocks used are the stocks that comprise the Dow30. The Dow30 is an index of stocks developed as a way of tracking U.S. market performance. It is comprised of the current top thirty blue-chip U.S. stocks. For each stock, we pulled several features, including closing price, high, low, and volume. Our research into the field suggested that these features would be the best for prediction. We pulled stock data from January 1, 1983 to December 31, 2013 to give us a window of 30 years. WRDS does not currently store the data we were utilizing for 2014.
 
-The closing price is the INSERT TEXT HERE. The high and low are the INSERT TEXT HERE (which is ask and which is bid). The volume is the INSERT TEXT HERE.
+The closing price is the price at the end of a particular time period. The daily closing price is the price at the end of a day. The high and low are the spread between what the buyer must pay for a stock (high) and what the seller would receive for a stock (low). The volume is the number of shares that were traded on a given day for a stock.
 
-The features we used could also be pulled in different time frames. For instance, we could pull yearly, monthly, or daily records for closing price. We could even pull hourly records on the high and low features. CAN VOLUME BE PULLED HOURLY? We pulled each of the different time frames in order to try and find the best time frame in addition to the best feature set.
+The features we used could be pulled in different time frames. For instance, we could pull yearly, monthly, or daily records for closing price. However, our research into the field suggested that a daily time frame would be both the best to predict on and the most desired model as well. Most successful papers trained daily models on past flucutations. In addition, predicting on monthly or yearly changes in the stock market is not as applicable to the individuals who would want to use this.
 
 \subsection{Trading strategy}
-The strategy each of our models is designed for is determining exactly when it is time to buy and sell stocks as well as when to simply hold steady. Therefore, we have a choice of three classes to assign to each time frame in our model. Our model assigns its choice based on the threshold of the transaction fee of 1.0\% we assigned above. If the model is expecting a change of more than 1.0\% either way, the model will choose to buy or sell accordingly. Otherwise, it will predict to hold. This decision is because it does not make sense to make a trade when the percentage difference is less than the fee to make the transaction. We then compare the model's choice with the actual best decision, which is calculated with the actual percent change in the same manner, in order to determine if the model's choice was correct. All predictions, including hold, are counted as successful "trades" if they match the actual best decision. The number of successful trades divided by the number of possible successful trades is how we obtain our accuracy. Calculations for precision and recall are related to the number of successful trades as well.
+The strategy each of our models is designed for is determining exactly when it is time to buy and sell stocks as well as when to simply hold steady. Therefore, we have a choice of three classes to assign to each time frame in our model. Our model assigns its choice based on the threshold of the transaction fee of 0.5\% we assigned above. If the model is expecting a change of more than 0.5\% either way, the model will choose to buy or sell accordingly. Otherwise, it will predict to hold. This decision is because it does not make sense to make a trade when the percentage difference is less than the fee to make the transaction. We then compare the model's choice with the actual best decision, which is calculated with the actual percent change in the same manner, in order to determine if the model's choice was correct. All predictions, including hold, are counted as successful "trades" if they match the actual best decision. The number of successful trades divided by the number of possible successful trades is how we obtain our accuracy. Calculations for precision and recall are related to the number of successful trades as well.
 
 \subsection{Backtesting}
 
@@ -102,6 +103,12 @@ We have written a backtesting module to look at different time frames and featur
 After some runs with different inputs with the backtesting module, we began to deduce that the best time frame for training and testing was daily data, not monthly or yearly. The monthly or yearly data simply produced very bland patterns when compared to the patterns produced by daily data. BETTER EXPLANATION. We decided we would utilize daily data when training our models in order to achieve the best, and more importantly, most realistic data.
 
 Section 3.5 shows some example patterns that our system found with the current pattern in cyan.   The other lines are past patterns that our system found that are potential matches and the dots to the right represent outcomes for each past pattern.  The rightmost dots are the actual outcome and average of the past patterns.
+
+\subsection{Machine learning framework}
+
+At this point, we've also set up another framework that allows us to easily evaluate different classifiers, different amounts of data, and different features easily. This will help us decide which classifiers, features, and data to use to train each respective machine learning model for best results.
+
+We've also reviewed numerous published papers to understand what existing work has been done, both successful and unsuccessful, which will ultimately aid in narrowing the scope on our final evaluation and help us determine best train and test practices.
 
 \subsection{Training and Analysis Overview}
 We trained and analyzed the performance of each of the following models: naive bayes, SVM with gaussian kernel, and neural network. Each model was trained with the help of the backtesting module. MORE INFO HERE OR IS ABOVE ENOUGH? Each of the models were trained on the same stocks, time frame, and features.
@@ -154,7 +161,46 @@ NEED TO TALK MORE ABOUT THIS? WHY WAS SVM SUCCESSFUL? WHY DID WE THINK THE SVM W
 
 The results for each of the Dow30 stocks are displayed below.
 
-SVM TABLE
+\begin{table}[h]
+  \begin{tabular}{@{}lllllll@{}}
+    \toprule
+    Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
+    MCD & 90 & 81 & 90 & 48.99 & \\
+    XOM & 85 & 72.25 & 85 & 48.27 & \\
+    KO & 82 & 67.24 & 82 & 42.51 & \\
+    GE & 74 & 54.76 & 74 & 41.33 & \\
+    MMM & 79 & 62.41 & 79 & 40.95 & \\
+    PFE & 76 & 57.76 & 76 & 40.48 & \\
+    IBM & 72 & 51.84 & 72 & 38.91 & \\
+    VZ & 62 & 38.44 & 62 & 38.44 & \\
+    JNJ & 78 & 60.84 & 78 & 38.08 & \\
+    MRK & 84 & 70.56 & 84 & 37.72 & \\
+    PG & 73 & 53.29 & 73 & 37.48 & \\
+    UNH & 64 & 40.96 & 64 & 36.74 & \\
+    WMT & 83 & 68.89 & 83 & 36.73 & \\
+    AXP & 64 & 40.96 & 64 & 36.05 & \\
+    T & 68 & 46.24 & 68 & 34.65 & \\
+    CAT & 70 & 49 & 70 & 34.6 & \\
+    V & 59 & 34.81 & 59 & 33.8 & \\
+    CSCO & 69 & 47.61 & 69 & 33.57 & \\
+    INTC & 66 & 43.56 & 66 & 32.81 & \\
+    JPM & 65 & 42.25 & 65 & 32.71 & \\
+    DD & 70 & 49 & 70 & 32.51 & \\
+    BA & 53 & 28.09 & 53 & 32.16 & \\
+    G & 72 & 51.84 & 72 & 31.3 & \\
+    HD & 67 & 44.9 & 67 & 30.08 & \\
+    MSFT & 61 & 37.21 & 61 & 29.65 & \\
+    NKE & 68 & 46.24 & 68 & 29.22 & \\
+    GS & 56 & 31.36 & 56 & 28.28 & \\
+    UTX & 63 & 39.69 & 63 & 28.25 & \\
+    DIS & 59 & 34.81 & 59 & 27.64 & \\
+    C & 53 & 28.09 & 53 & 26.99 & \\
+    TRV & 48 & 23.04 & 48 & 13.71 & \\ \bottomrule
+    Average & 68.80 & 48.35 & 68.80 & 34.66 & \\
+  \end{tabular}
+  \caption{SVM Results for the Dow30}
+  \label{my-label}
+\end{table}
 
 The svm accuracy does fluctuate quite a bit between some of the stocks, having higher predictive power for some (MRK, MCD) and less for others (TRV, V). Through some deeper digging, this appears to be the result of the svm performing better on more stable stocks (segements such as drugs, food, and retail) when compared to more volatile stocks (segements such as insurance and finance). This was an interesting corollary we saw to our main findings.
 
@@ -175,7 +221,46 @@ NN 100 epochs, ADDITIONAL DON'T HELP TOO MUCH, MUST ALREADY BE CONVERGING
 
 The results for the neural network on all thirty stocks are printed below.
 
-NN TABLE
+\begin{table}[h]
+  \begin{tabular}{@{}lllllll@{}}
+    \toprule
+    Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
+    MCD & 90 & 81 & 90 & 48.99 & \\
+    MMM & 79 & 62.41 & 79 & 48.95 & \\
+    XOM & 85 & 72.25 & 85 & 48.27 & \\
+    KO & 82 & 67.24 & 82 & 42.5 & \\
+    GE & 74 & 54.76 & 74 & 41.33 & \\
+    PFE & 76 & 57.76 & 76 & 40.48 & \\
+    IBM & 72 & 51.84 & 72 & 38.91 & \\
+    VZ & 62 & 38.44 & 62 & 38.44 & \\
+    JNJ & 78 & 60.84 & 78 & 38.09 & \\
+    MRK & 84 & 70.56 & 84 & 37.72 & \\
+    PG & 73 & 53.29 & 73 & 37.48 & \\
+    UNH & 64 & 40.96 & 64 & 36.74 & \\
+    WMT & 83 & 68.89 & 83 & 36.72 & \\
+    AXP & 64 & 40.96 & 64 & 36.05 & \\
+    INTC & 66 & 62.46 & 66 & 35.86 & \\
+    CAT & 69 & 48.79 & 69 & 34.44 & \\
+    T & 67 & 46.02 & 67 & 34.18 & \\
+    JPM & 65 & 42.68 & 65 & 32.71 & \\
+    DD & 70 & 49 & 70 & 32.51 & \\
+    V & 49 & 36.88 & 49 & 31.8 & \\
+    CSCO & 63 & 49.25 & 63 & 31.48 & \\
+    G & 72 & 51.48 & 72 & 31.3 & \\
+    BA & 52 & 28.12 & 52 & 31.15 & \\
+    MSFT & 61 & 37.21 & 61 & 29.65 & \\
+    NKE & 68 & 46.24 & 68 & 29.22 & \\
+    HD & 66 & 44.67 & 66 & 29.06 & \\
+    GS & 54 & 43.15 & 54 & 28.47 & \\
+    UTX & 63 & 39.69 & 63 & 28.25 & \\
+    DIS & 58 & 34.57 & 58 & 27.46 & \\
+    C & 52 & 27.84 & 52 & 26.26 & \\
+    TRV & 46 & 45.12 & 46 & 18.4 & \\ \bottomrule
+    Average & 67.96 & 50.14 & 67.96 & 34.93 & \\
+  \end{tabular}
+  \caption{Neural Net Results for the Dow30}
+  \label{my-label}
+\end{table}
 
 MAYBE COMBINE OBSERVATIONS INTO OWN SUBSECTION
 The neural network prediction accuracy fluctuates quite a bit on for differing stocks. The model, like the svm, had higher predictive accuracy for more stable stocks and performed worse (sometimes even worse than random guessing) for more volatile stocks.
@@ -188,16 +273,6 @@ MAYBE PUT OBSERVATIONS FROM INDIVIDUAL SECTIONS HERE.
 For a quick summary, here is the average performance of each of the three models over the thirty stocks.
 
 SUMMARY TABLE
-
-\subsection{Machine learning framework}
-
-At this point, we've also set up another framework that allows us to easily evaluate different classifiers, different amounts of data, and different features easily. This will help us decide which classifiers, features, and data to use to train each respective machine learning model for best results.
-
-We've also reviewed numerous published papers to understand what existing work has been done, both successful and unsuccessful, which will ultimately aid in narrowing the scope on our final evaluation and help us determine best train and test practices.
-
-\subsection{Classifier Evaluation}
-
-So far we've evaluated a boosted decision tree and SVMs with polynomial, gaussian, and cosine similarity kernels using our framework. We've evaluated small subsets of data and different combinations of features for our preliminary trials in order to get some idea of performance without investing too much time. So far the gaussian kernel is performing the best of our set of tested classifiers, but requires additional tuning to be a good predictor in general. The boosted decision tree and other SVM kernels performed about the same as random guessing.
 
 \subsection{Future Work}
 
