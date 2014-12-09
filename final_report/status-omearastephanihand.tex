@@ -121,12 +121,12 @@ At this point, we've also set up another framework that allows us to easily eval
 \subsection{Training and Analysis Overview}
 \begin{figure}[h!]
 \begin{center}
-        \includegraphics[scale=0.3]{summary_fig}
+        \includegraphics[scale=0.37]{summary_fig}
         \caption{Framework summary}
 \end{center}
 \end{figure}
 
-Through the framework, we found that each model had the most success when using the closing price as the sole feature. We did not find any statistically significant differences in a model's predictive power when using data from several decades ago as opposed to data from recent years. We also found negligible returns on our metrics after increasing thw window past twenty-one days. We reviewed numerous published papers to verify that these findings were correct and found that many people in quantitative finance were only able to improve their metrics by using many additional features, some of which were not available in WRDS. In addition, many of the features we had pulled were intrinsically related, meaning the features were not independent and did not add to the model's ability to predict well. Therefore, we decided to utilize closing price as our sole feature for evaluating the different models.
+Through the framework, we found that each model had the most success when using the closing price as the sole feature. We did not find any statistically significant differences in a model's predictive power when using data from several decades ago as opposed to data from recent years. We also found negligible returns on our metrics after increasing the window past twenty-one days. We reviewed numerous published papers to verify that these findings were correct and found that many people in quantitative finance were only able to improve their metrics by using many additional features, some of which were not available in WRDS. In addition, many of the features we had pulled were intrinsically related, meaning the features were not independent and did not add to the model's ability to predict well. Therefore, we decided to utilize closing price as our sole feature for evaluating the different models.
 
 We utilized our machine learning framework to train and analyze the performance of each of the following models: naive bayes, SVM with gaussian kernel, and a neural network. Based on our findings in the above paragraphs, we evaluated each model on the last one-hundred days of 2013. We utilized a twenty-one day window for our analysis of each model.
 
@@ -137,7 +137,7 @@ Our main goal for each model was to maximize the percent return over the thirty 
 \section{Model Analysis}
 
 \subsection{Naive Bayes}
-The first machine learning classifier we analyzed was naive Bayes. Through research into past papers on the topic, it appeared many people had mixed results when trying to use naive bayes to predict trades. We did not expect naive bayes to perform well, but we did expect it to produce results better than random guessing. We felt that the probabilistic elements in Naive Bayes would allow it to predict the correct trend for a particular day, which would equate to predicting the correct action for the day.
+The first machine learning classifier we analyzed was naive Bayes. Through research into past papers on the topic, it appeared many people had mixed results when trying to use naive bayes to predict trades. We did not expect naive Bayes to perform well, but we did expect it to produce results better than random guessing. We felt that the probabilistic elements in Naive Bayes would allow it to predict the correct trend for a particular day, which would equate to predicting the correct action for the day.
 
 Unfortunately, we were not able to achieve statistically significant results with our naive Bayes implementation. We averaged around 51.3\% accuracy and a 16.1\% return for the model, which was not able to outperform the averge Dow30 return over the same time frame. In other words, an investor's return would have been better if he/she did nothing instead of following the model's recommendations.
 
@@ -152,7 +152,7 @@ On average over the thirty stocks, our svm model predicted the correct trade wit
 
 The results for each of the Dow30 stocks are displayed below.
 
-\begin{table}[h]
+\begin{table}[h!]
   \begin{tabular}{@{}lllllll@{}}
     \toprule
     Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
@@ -196,15 +196,15 @@ The results for each of the Dow30 stocks are displayed below.
 The svm illustrates empirical success in predicting the correct trade decision for a simplified stock trading model. It validated our initial assumptions and justifications that the svm would be successful.
 
 \subsection{Neural network}
-The final machine learning classifier we analyzed was a neural network. There were some papers we found analyzing neural network performance, but we mainly decided to try it as many quantitative finance teams in industry utilize neural networks in order to make predictions on current market trends. Faced with this knowledge, we expected the neural netowrk to perform well and outperform the Dow30 average percent return.
+The final machine learning classifier we analyzed was a neural network. There were some papers we found analyzing neural network performance, but we mainly decided to try it as many quantitative finance teams in industry utilize neural networks in order to make predictions on current market trends. Faced with this knowledge, we expected the neural network to perform well and outperform the Dow30 average percent return.
 
-Our neural netowrk consisted of three hidden layers and adhered to the Baum-Hassler rule. This rule was developed for financial forecasting with neural networks. The formula output that we should utilize three hidden layers. The same paper also suggested the number of nodes for each layer. The two outer hidden layers should have $2*num input nodes) + 1$ nodes and the middle hidden layer should have $2*num input nodes) - 1$ nodes. As we used twenty-one days for our input, the hidden layer sizes were $<43,41,43>$ respectively. Our neural network was trained on one-hundred epochs, as we only saw negligible improvements when increasing the number of epochs (our model was already converging).
+Our neural network consisted of three hidden layers and adhered to the Baum-Hassler rule. This rule was developed for financial forecasting with neural networks. The formula output that we should utilize three hidden layers. The same paper also suggested the number of nodes for each layer. The two outer hidden layers should have $2*num input nodes) + 1$ nodes and the middle hidden layer should have $2*num input nodes) - 1$ nodes. As we used twenty-one days for our input, the hidden layer sizes were $<43,41,43>$ respectively. Our neural network was trained on one-hundred epochs, as we only saw negligible improvements when increasing the number of epochs (our model was already converging).
 
 On average over the thirty stocks, our neural network performed very well. Our neural network had an average trade prediction accuracy of 68.81\% and an average 34.66\% return. We more than doubled the average return of the Dow30 over the same time period. The results here are slightly more optimistic than they should be, as our model was trained and predicted on a reduced stock model with a fixed transaction costs. However, the model still performs very well and would definitely prove very helpful for traders looking for an edge.
 
 The results for the neural network on all thirty stocks are printed below.
 
-\begin{table}[h]
+\begin{table}[h!]
   \begin{tabular}{@{}lllllll@{}}
     \toprule
     Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
@@ -259,7 +259,7 @@ While we have been very successful in achieving our goals, we believe that there
 
 Another change we could implement is expanding the sliding window and weighting the more recent days higher. This could allow us to increase our accuracy and percent return by finding larger trends without losing our focus on recent occurrences.
 
-A final change that could be implemented is to try and predict the expected percent change along the trade decision. This could provide traders using the modules with more information before committing to our model's recommendations.
+A final change that could be implemented is to try and predict the expected percent change along with the trade decision. This could provide traders using the modules with more information before committing to our model's recommendations.
 
 %You may want to include figures in the paper to help readers visualize
 %your approach and your results. Such artwork should be centered,
