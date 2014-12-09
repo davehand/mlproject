@@ -91,51 +91,27 @@ The dataset used was downloaded from Wharton Research Data Services (WRDS). The 
 
 The closing price is the price at the end of a particular time period. The daily closing price is the price at the end of a day. The high and low are the spread between what the buyer must pay for a stock (high) and what the seller would receive for a stock (low). The volume is the number of shares that were traded on a given day for a stock.
 
-The features we used could be pulled in different time frames. For instance, we could pull yearly, monthly, or daily records for closing price. However, our research into the field suggested that a daily time frame would be both the best to predict on and the most desired model as well. Most successful papers trained daily models on past flucutations. In addition, predicting on monthly or yearly changes in the stock market is not as applicable to the individuals who would want to use this.
+The features we used could be pulled in different time frames. For instance, we could pull yearly, monthly, or daily records for closing price. However, our research into the field suggested that a daily time frame would be both the best to predict on and the most desired model as well. Most successful papers trained daily models on past flucutations. In addition, predicting on a daily time frame inherently captures monthly and yearly trends, just on a daily level, which is also more applicable to the individuals who would want to use this.
 
 \subsection{Trading strategy}
-The strategy each of our models is designed for is determining exactly when it is time to buy and sell stocks as well as when to simply hold steady. Therefore, we have a choice of three classes to assign to each time frame in our model. Our model assigns its choice based on the threshold of the transaction fee of 0.5\% we assigned above. If the model is expecting a change of more than 0.5\% either way, the model will choose to buy or sell accordingly. Otherwise, it will predict to hold. This decision is because it does not make sense to make a trade when the percentage difference is less than the fee to make the transaction. We then compare the model's choice with the actual best decision, which is calculated with the actual percent change in the same manner, in order to determine if the model's choice was correct. All predictions, including hold, are counted as successful "trades" if they match the actual best decision. The number of successful trades divided by the number of possible successful trades is how we obtain our accuracy. Calculations for precision and recall are related to the number of successful trades as well.
+Eeach of our models is designed for determining the best decision for a given day. Therefore, we have a choice of three classes (buy, sell, or hold) to assign to each day in our model. Our model assigns its choice based on the threshold of the transaction fee of 0.5\% we assigned above. If the model is expecting a change of more than 0.5\% in the stock for a particular day, the model will choose to buy or sell accordingly (i.e. if the percentage change is positive or negative). Otherwise, it will predict to hold. The decision to hold is because in these cases, the cost to make the trade is greater than the expected return of the transaction. We then compare the model's choice with the actual best decision, which is calculated by using the actual percent change in the same manner, in order to determine if the model's choice was correct. All predictions, including hold, are counted as successful "trades" if they match the actual best decision. The number of successful trades divided by the number of possible successful trades is how we obtain our accuracy. Calculations for precision and recall are related to the number of successful trades as well.
 
 \subsection{Backtesting}
+We have written a backtesting module to look at different time frames and feature sets in our historical trades data. The backtesting module also allows us to choose where our time frame begins and ends, i.e. if we only wanted to use the last one-hundred days of 2013 for our training and testing. After researching how backtesting is implemented in real-world environments, we have also implemented pattern recognition in our backtesting code to confirm that there are trends we could exploit.
 
-We have written a backtesting module to look at different time frames and feature sets in our historical trades data. The backtesting module also allows us to choose where our time frame begins and ends, i.e. if we only wanted to use 2013 data for our training and testing. After researching how it is done in the real world, we have also implemented pattern recognition in our backtesting code to confirm that there are trends we could exploit.
-
-After some runs with different inputs with the backtesting module, we began to deduce that the best time frame for training and testing was daily data, not monthly or yearly. The monthly or yearly data simply produced very bland patterns when compared to the patterns produced by daily data. BETTER EXPLANATION. We decided we would utilize daily data when training our models in order to achieve the best, and more importantly, most realistic data.
-
-Section 3.5 shows some example patterns that our system found with the current pattern in cyan.   The other lines are past patterns that our system found that are potential matches and the dots to the right represent outcomes for each past pattern.  The rightmost dots are the actual outcome and average of the past patterns.
+Section 3.6 shows some example patterns that our system found with the current pattern in cyan. The other lines are past patterns that our system found that are potential matches and the dots to the right represent outcomes for each past pattern.  The rightmost dots are the actual outcome and average of the past patterns.
 
 \subsection{Machine learning framework}
-
-At this point, we've also set up another framework that allows us to easily evaluate different classifiers, different amounts of data, and different features easily. This will help us decide which classifiers, features, and data to use to train each respective machine learning model for best results.
-
-We've also reviewed numerous published papers to understand what existing work has been done, both successful and unsuccessful, which will ultimately aid in narrowing the scope on our final evaluation and help us determine best train and test practices.
+At this point, we've also set up another framework that allows us to easily evaluate different classifiers, different time frames (10 or 100 days), and different features easily. The framework receives the patterns and features from the backtesting module. The framework uses a specified number of past days in order to make a trade prediction for a specific day. For instance, if we specified our window to be ten days, the model would have been trained on the past ten days and then utilize that knowledge to predict on the specific day. We then would slide the entire ten day window forward one day and retrain the model in order to predict on the following day. We utilized validation sets in order to find the best features from our dataset. Our framework also utilized grid-search for finding the best-tuned variables for some models. This helped us determine which features, data, and window size to use to train each respective model for the best results.
 
 \subsection{Training and Analysis Overview}
-We trained and analyzed the performance of each of the following models: naive bayes, SVM with gaussian kernel, and neural network. Each model was trained with the help of the backtesting module. MORE INFO HERE OR IS ABOVE ENOUGH? Each of the models were trained on the same stocks, time frame, and features.
+Through the framework, we found that each model had the most success when using the closing price as the sole feature. We did not find any statistically significant differences in a model's predictive power when using data from several decades ago as opposed to data from recent years. We also found negligible returns on our metrics after increasing thw window past twenty-one days. We reviewed numerous published papers to verify that these findings were correct and found that many people in quantitative finance were only able to improve their metrics by using many additional features, some of which were not available in WRDS. In addition, many of the features we had pulled were intrinsically related, meaning the features were not independent and did not add to the model's ability to predict well. Therefore, we decided to utilize closing price as our sole feature for evaluating the different models.
 
-We define a trade as a prediction. Every day a prediction must be made, whether to buy, sell, or hold the stock. Whether or not this prediction is the correct prediction is the heart of our model. We are attempting to predict the correct trade as often as possible based on previous data in the model.
+We utilized our machine learning framework to train and analyze the performance of each of the following models: naive bayes, SVM with gaussian kernel, and a neural network. Based on our findings in the above paragraphs, we evaluated each model on the last one-hundred days of 2013. We utilized a twenty-one day window for our analysis of each model.
 
-Our models utilize the percent change of the various features they are given in order to determine whether to buy, sell, or hold. SHOULD WE SAY THE THRESHOLD AND STUFF, REALLY DUMBS IT DOWN. BOTH HERE AND IN TRADING STRATEGY. SHOULD SAY WE USE THE PERCENTAGE CHANGE TO DETERMINE WHAT THE BEST DECISION WAS. SHOW FIGURES HERE.
+Our models were evaluated on four specific criteria: accuracy, precision, recall, and the percent return. In addition to those base metrics, we also calculated the percent return as defined above in order to better determine the financial success of our model. For example, our model could predict with a high accuracy, but only on days that produce negligible returns. Therefore, percent return provides a way to verify that our correct predictions are more than just correct, they also need to be profitable. We can determine if our percent return is successful by comparing it with the stock's average actual percent return over the same period. If we outperform the actual average percent return, we consider our model to be successful.
 
-We used several metrics to evaluate our model, including accuracy, precision, and recall. In addition to those base metrics, we also calculated the percent return as defined above in order to better determine the financial success of our model. For example, our model could predict very well, but perhaps only gain a little on each correct prediction and lose a lot on each incorrect prediction. Therefore, percent return provides a way to verify that our correct predictions are more than just correct, they need to also be profitable. We can determine if our percent return is successful by comparing it with the stock's average actual percent return over the same period. If we outperform the actual average percent return, we consider our model to be successful.
-
-For each model, our main focus was on model accuracy and maximizing the percent return. We wanted to produce a model that could not only beat the average return, but produce the best return possible given its training and input data.
-
-FOCUSED ON MAXIMIZING PERCENT RETURN
-several features including the price and volume history of a list of equities
-could talk about data normalization
-
-either here or before this we need to talk about how all models had the best success with a daily time frame and a single feature, but mention we tried combinations of them. Talk about how for the analysis in this paper, we used the last 100 days of 2013.
-
-talk about how we found that all 3 classifiers did the best with just closing price - maybe because some features are not independent in finance, didn't help us to have additional features, only contributed to overfitting
-
-talk about the most important models either here or above
-
-talk about being trained on ony one stock at a time, model doesn't handle multiple stocks well
-
-future work - try and predict the percent change so traders know if it's worth the risk as opposed to predicting what to do
-
-is it worse than random guessing even though we have three options - maybe we could talk about how our predictions aren't statistically significant
+Our main goal for each model was to maximize the percent return over the thirty stocks. If we could outperform the Dow30's average return over the same time frame, then we would have empirical evidence of the success of our model.
 
 \section{Model Analysis}
 
@@ -165,38 +141,38 @@ The results for each of the Dow30 stocks are displayed below.
   \begin{tabular}{@{}lllllll@{}}
     \toprule
     Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
-    MCD & 90 & 81 & 90 & 48.99 & \\
-    XOM & 85 & 72.25 & 85 & 48.27 & \\
-    KO & 82 & 67.24 & 82 & 42.51 & \\
-    GE & 74 & 54.76 & 74 & 41.33 & \\
-    MMM & 79 & 62.41 & 79 & 40.95 & \\
-    PFE & 76 & 57.76 & 76 & 40.48 & \\
-    IBM & 72 & 51.84 & 72 & 38.91 & \\
-    VZ & 62 & 38.44 & 62 & 38.44 & \\
-    JNJ & 78 & 60.84 & 78 & 38.08 & \\
-    MRK & 84 & 70.56 & 84 & 37.72 & \\
-    PG & 73 & 53.29 & 73 & 37.48 & \\
-    UNH & 64 & 40.96 & 64 & 36.74 & \\
-    WMT & 83 & 68.89 & 83 & 36.73 & \\
-    AXP & 64 & 40.96 & 64 & 36.05 & \\
-    T & 68 & 46.24 & 68 & 34.65 & \\
-    CAT & 70 & 49 & 70 & 34.6 & \\
-    V & 59 & 34.81 & 59 & 33.8 & \\
-    CSCO & 69 & 47.61 & 69 & 33.57 & \\
-    INTC & 66 & 43.56 & 66 & 32.81 & \\
-    JPM & 65 & 42.25 & 65 & 32.71 & \\
-    DD & 70 & 49 & 70 & 32.51 & \\
-    BA & 53 & 28.09 & 53 & 32.16 & \\
-    G & 72 & 51.84 & 72 & 31.3 & \\
-    HD & 67 & 44.9 & 67 & 30.08 & \\
-    MSFT & 61 & 37.21 & 61 & 29.65 & \\
-    NKE & 68 & 46.24 & 68 & 29.22 & \\
-    GS & 56 & 31.36 & 56 & 28.28 & \\
-    UTX & 63 & 39.69 & 63 & 28.25 & \\
-    DIS & 59 & 34.81 & 59 & 27.64 & \\
-    C & 53 & 28.09 & 53 & 26.99 & \\
-    TRV & 48 & 23.04 & 48 & 13.71 & \\ \bottomrule
-    Average & 68.80 & 48.35 & 68.80 & 34.66 & \\
+    MCD & 90 & 81 & 90.55 & 48.99 & \\
+    XOM & 85 & 72.25 & 86.48 & 48.27 & \\
+    KO & 82 & 67.24 & 82.96 & 42.51 & \\
+    GE & 74 & 54.76 & 77.43 & 41.33 & \\
+    MMM & 79 & 62.41 & 79.82 & 40.95 & \\
+    PFE & 76 & 57.76 & 77.56 & 40.48 & \\
+    IBM & 72 & 51.84 & 74.52 & 38.91 & \\
+    VZ & 62 & 38.44 & 65.66 & 38.44 & \\
+    JNJ & 78 & 60.84 & 78.24 & 38.08 & \\
+    MRK & 84 & 70.56 & 84.88 & 37.72 & \\
+    PG & 73 & 53.29 & 75.28 & 37.48 & \\
+    UNH & 64 & 40.96 & 67.96 & 36.74 & \\
+    WMT & 83 & 68.89 & 83.74 & 36.73 & \\
+    AXP & 64 & 40.96 & 66.26 & 36.05 & \\
+    T & 68 & 46.24 & 70.34 & 34.65 & \\
+    CAT & 70 & 49 & 74.26 & 34.6 & \\
+    V & 59 & 34.81 & 61.74 & 33.8 & \\
+    CSCO & 69 & 47.61 & 70.24 & 33.57 & \\
+    INTC & 66 & 43.56 & 68.92 & 32.81 & \\
+    JPM & 65 & 42.25 & 68.48 & 32.71 & \\
+    DD & 70 & 49 & 72.52 & 32.51 & \\
+    BA & 53 & 28.09 & 54.24 & 32.16 & \\
+    G & 72 & 51.84 & 73.96 & 31.3 & \\
+    HD & 67 & 44.9 & 69.68 & 30.08 & \\
+    MSFT & 61 & 37.21 & 63.14 & 29.65 & \\
+    NKE & 68 & 46.24 & 68.74 & 29.22 & \\
+    GS & 56 & 31.36 & 57.54 & 28.28 & \\
+    UTX & 63 & 39.69 & 63.88 & 28.25 & \\
+    DIS & 59 & 34.81 & 60.23 & 27.64 & \\
+    C & 53 & 28.09 & 55.84 & 26.99 & \\
+    TRV & 48 & 23.04 & 48.64 & 13.71 & \\ \bottomrule
+    Average & 68.80 & 48.35 & 70.77 & 34.66 & \\
   \end{tabular}
   \caption{SVM Results for the Dow30}
   \label{my-label}
@@ -225,38 +201,38 @@ The results for the neural network on all thirty stocks are printed below.
   \begin{tabular}{@{}lllllll@{}}
     \toprule
     Ticker & Accuracy & Precision & Recall & \% Return & \\ \midrule
-    MCD & 90 & 81 & 90 & 48.99 & \\
-    MMM & 79 & 62.41 & 79 & 48.95 & \\
-    XOM & 85 & 72.25 & 85 & 48.27 & \\
-    KO & 82 & 67.24 & 82 & 42.5 & \\
-    GE & 74 & 54.76 & 74 & 41.33 & \\
-    PFE & 76 & 57.76 & 76 & 40.48 & \\
-    IBM & 72 & 51.84 & 72 & 38.91 & \\
-    VZ & 62 & 38.44 & 62 & 38.44 & \\
-    JNJ & 78 & 60.84 & 78 & 38.09 & \\
-    MRK & 84 & 70.56 & 84 & 37.72 & \\
-    PG & 73 & 53.29 & 73 & 37.48 & \\
-    UNH & 64 & 40.96 & 64 & 36.74 & \\
-    WMT & 83 & 68.89 & 83 & 36.72 & \\
-    AXP & 64 & 40.96 & 64 & 36.05 & \\
-    INTC & 66 & 62.46 & 66 & 35.86 & \\
-    CAT & 69 & 48.79 & 69 & 34.44 & \\
-    T & 67 & 46.02 & 67 & 34.18 & \\
-    JPM & 65 & 42.68 & 65 & 32.71 & \\
-    DD & 70 & 49 & 70 & 32.51 & \\
-    V & 49 & 36.88 & 49 & 31.8 & \\
-    CSCO & 63 & 49.25 & 63 & 31.48 & \\
-    G & 72 & 51.48 & 72 & 31.3 & \\
-    BA & 52 & 28.12 & 52 & 31.15 & \\
-    MSFT & 61 & 37.21 & 61 & 29.65 & \\
-    NKE & 68 & 46.24 & 68 & 29.22 & \\
-    HD & 66 & 44.67 & 66 & 29.06 & \\
-    GS & 54 & 43.15 & 54 & 28.47 & \\
-    UTX & 63 & 39.69 & 63 & 28.25 & \\
-    DIS & 58 & 34.57 & 58 & 27.46 & \\
-    C & 52 & 27.84 & 52 & 26.26 & \\
-    TRV & 46 & 45.12 & 46 & 18.4 & \\ \bottomrule
-    Average & 67.96 & 50.14 & 67.96 & 34.93 & \\
+    MCD & 90 & 81 & 90.43 & 48.99 & \\
+    MMM & 79 & 62.41 & 80.12 & 48.95 & \\
+    XOM & 85 & 72.25 & 85.23 & 48.27 & \\
+    KO & 82 & 67.24 & 83.45 & 42.5 & \\
+    GE & 74 & 54.76 & 76.72 & 41.33 & \\
+    PFE & 76 & 57.76 & 77.82 & 40.48 & \\
+    IBM & 72 & 51.84 & 73.15 & 38.91 & \\
+    VZ & 62 & 38.44 & 64.26 & 38.44 & \\
+    JNJ & 78 & 60.84 & 78.98 & 38.09 & \\
+    MRK & 84 & 70.56 & 84.84 & 37.72 & \\
+    PG & 73 & 53.29 & 75.74 & 37.48 & \\
+    UNH & 64 & 40.96 & 67.04 & 36.74 & \\
+    WMT & 83 & 68.89 & 83.44 & 36.72 & \\
+    AXP & 64 & 40.96 & 65.82 & 36.05 & \\
+    INTC & 66 & 62.46 & 66.56 & 35.86 & \\
+    CAT & 69 & 48.79 & 70.56 & 34.44 & \\
+    T & 67 & 46.02 & 68.78 & 34.18 & \\
+    JPM & 65 & 42.68 & 68.34 & 32.71 & \\
+    DD & 70 & 49 & 71.66 & 32.51 & \\
+    V & 49 & 36.88 & 51.08 & 31.8 & \\
+    CSCO & 63 & 49.25 & 63.6 & 31.48 & \\
+    G & 72 & 51.48 & 73.48 & 31.3 & \\
+    BA & 52 & 28.12 & 52.78 & 31.15 & \\
+    MSFT & 61 & 37.21 & 63.21 & 29.65 & \\
+    NKE & 68 & 46.24 & 69.78 & 29.22 & \\
+    HD & 66 & 44.67 & 67.34 & 29.06 & \\
+    GS & 54 & 43.15 & 54.53 & 28.47 & \\
+    UTX & 63 & 39.69 & 65.98 & 28.25 & \\
+    DIS & 58 & 34.57 & 59.28 & 27.46 & \\
+    C & 52 & 27.84 & 55.22 & 26.26 & \\
+    TRV & 46 & 45.12 & 46.16 & 18.4 & \\ \bottomrule
+    Average & 67.97 & 50.14 & 69.53 & 34.93 & \\
   \end{tabular}
   \caption{Neural Net Results for the Dow30}
   \label{my-label}
