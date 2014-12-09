@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  8 DEC 2014 23:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  8 DEC 2014 23:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -394,18 +394,18 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-<figure_2.png, id=23, 722.7pt x 433.62pt>
+<figure_2.png, id=25, 722.7pt x 433.62pt>
 File: figure_2.png Graphic file (type png)
  <use figure_2.png>
 Package pdftex.def Info: figure_2.png used on input line 106.
 (pdftex.def)             Requested size: 216.81166pt x 130.087pt.
 
-<figure_3.png, id=25, 722.7pt x 433.62pt>
+<figure_3.png, id=27, 722.7pt x 433.62pt>
 File: figure_3.png Graphic file (type png)
  <use figure_3.png>
 Package pdftex.def Info: figure_3.png used on input line 113.
 (pdftex.def)             Requested size: 216.81166pt x 130.087pt.
- [2 <./figure_2.png> <./figure_3.png>] <summary_fig.png, id=38, 618.31pt x 311.
+ [2 <./figure_2.png> <./figure_3.png>] <summary_fig.png, id=41, 618.31pt x 311.
 1625pt>
 File: summary_fig.png Graphic file (type png)
 
@@ -470,10 +470,10 @@ e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2013/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2013/texm
 f-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2013/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb>
-Output written on status-omearastephanihand.pdf (5 pages, 238850 bytes).
+Output written on status-omearastephanihand.pdf (5 pages, 238941 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  34 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

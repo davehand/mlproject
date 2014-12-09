@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex status-omearastephanihand"] 1418100326 "status-omearastephanihand.aux" "status-omearastephanihand.bbl" "status-omearastephanihand" 1418100476
+["bibtex status-omearastephanihand"] 1418100695 "status-omearastephanihand.aux" "status-omearastephanihand.bbl" "status-omearastephanihand" 1418100944
   "./icml2014.bst" 1417719242 27012 bac9c9ef6a3d56da903d9ae0dc074591 ""
-  "status-omearastephanihand.aux" 1418100476 1251 0279e57b44b2c1d5ee6d2c16b9ae2d8a ""
+  "status-omearastephanihand.aux" 1418100943 1266 899dc288cdbcd85cea0bc2fe5b6abbd9 ""
   "status-omearastephanihand.bcf" 0 -1 0 ""
   "status-omearastephanihand.bib" 1418099956 1879 f995ee7d1d6c465a19cb33ebb606f3cf ""
   (generated)
   "status-omearastephanihand.blg"
   "status-omearastephanihand.bbl"
-["pdflatex"] 1418100475 "status-omearastephanihand.tex" "status-omearastephanihand.pdf" "status-omearastephanihand" 1418100476
+["pdflatex"] 1418100942 "status-omearastephanihand.tex" "status-omearastephanihand.pdf" "status-omearastephanihand" 1418100944
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2013/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -76,10 +76,10 @@
   "figure_3.png" 1417719242 42975 412f10bba76415c1e9cbf11898f33353 ""
   "icml2014.sty" 1417719242 20754 d0b583de8a35863cd51bd9b5f211dbc2 ""
   "natbib.sty" 1417719242 45154 40088ce024445d7ee2bca59e704cdd01 ""
-  "status-omearastephanihand.aux" 1418100476 1251 0279e57b44b2c1d5ee6d2c16b9ae2d8a ""
-  "status-omearastephanihand.bbl" 1418100326 1497 c3eb3020c6e4f964b9773d12b28b71e9 "bibtex status-omearastephanihand"
-  "status-omearastephanihand.out" 1418100475 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "status-omearastephanihand.tex" 1418100475 29582 310455a9f49918b9743a676f3c78bdd3 ""
+  "status-omearastephanihand.aux" 1418100943 1266 899dc288cdbcd85cea0bc2fe5b6abbd9 ""
+  "status-omearastephanihand.bbl" 1418100696 1497 c3eb3020c6e4f964b9773d12b28b71e9 "bibtex status-omearastephanihand"
+  "status-omearastephanihand.out" 1418100943 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "status-omearastephanihand.tex" 1418100941 29586 726ff5272b254a509f0e6414141ba507 ""
   "summary_fig.png" 1418095728 70018 d54434bcddf1f742dade50d91cd73790 ""
   (generated)
   "status-omearastephanihand.pdf"
