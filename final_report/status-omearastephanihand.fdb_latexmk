@@ -1,19 +1,20 @@
 # Fdb version 3
-["bibtex status-omearastephanihand"] 1418098590 "status-omearastephanihand.aux" "status-omearastephanihand.bbl" "status-omearastephanihand" 1418098631
+["bibtex status-omearastephanihand"] 1418100326 "status-omearastephanihand.aux" "status-omearastephanihand.bbl" "status-omearastephanihand" 1418100476
   "./icml2014.bst" 1417719242 27012 bac9c9ef6a3d56da903d9ae0dc074591 ""
-  "status-omearastephanihand.aux" 1418098631 1112 c928d5c435d3369d7f28968948c624e7 ""
+  "status-omearastephanihand.aux" 1418100476 1251 0279e57b44b2c1d5ee6d2c16b9ae2d8a ""
   "status-omearastephanihand.bcf" 0 -1 0 ""
-  "status-omearastephanihand.bib" 1417719242 1614 afef8bbf9fc2dc494610ede52d0c7a67 ""
+  "status-omearastephanihand.bib" 1418099956 1879 f995ee7d1d6c465a19cb33ebb606f3cf ""
   (generated)
   "status-omearastephanihand.blg"
   "status-omearastephanihand.bbl"
-["pdflatex"] 1418098630 "status-omearastephanihand.tex" "status-omearastephanihand.pdf" "status-omearastephanihand" 1418098631
+["pdflatex"] 1418100475 "status-omearastephanihand.tex" "status-omearastephanihand.pdf" "status-omearastephanihand" 1418100476
   "/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2013/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm" 1136768653 2124 2601a75482e9426d33db523edf23570a ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
+  "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm" 1136768653 2680 312a2d12b1f1df8ee0212e7ba1962402 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmro7t.tfm" 1136768653 2212 ddd058020f70d31af08b213e40125079 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/tfm/adobe/times/ptmro8r.tfm" 1136768653 4548 f370a182a02c40d95c5554802dc0f174 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
@@ -24,6 +25,7 @@
   "/usr/local/texlive/2013/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf" 1136768653 1372 788387fea833ef5963f4c5bffe33eb89 ""
   "/usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf" 1136768653 1380 0ea3a3370054be6da6acd929ec569f06 ""
+  "/usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf" 1136768653 1948 7330aeef3af211edff3b35fb2c12a0fd ""
   "/usr/local/texlive/2013/texmf-dist/fonts/vf/adobe/times/ptmro7t.vf" 1136768653 1384 5daa35f30ad788d676a07a579b5db7fa ""
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -74,13 +76,13 @@
   "figure_3.png" 1417719242 42975 412f10bba76415c1e9cbf11898f33353 ""
   "icml2014.sty" 1417719242 20754 d0b583de8a35863cd51bd9b5f211dbc2 ""
   "natbib.sty" 1417719242 45154 40088ce024445d7ee2bca59e704cdd01 ""
-  "status-omearastephanihand.aux" 1418098631 1112 c928d5c435d3369d7f28968948c624e7 ""
-  "status-omearastephanihand.bbl" 1418098590 1307 3e4bea6d1c76ab08a42980f51fcb818a "bibtex status-omearastephanihand"
-  "status-omearastephanihand.out" 1418098631 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "status-omearastephanihand.tex" 1418098629 29452 778c3ffb95421e5ee9f2cb68bdf7501b ""
+  "status-omearastephanihand.aux" 1418100476 1251 0279e57b44b2c1d5ee6d2c16b9ae2d8a ""
+  "status-omearastephanihand.bbl" 1418100326 1497 c3eb3020c6e4f964b9773d12b28b71e9 "bibtex status-omearastephanihand"
+  "status-omearastephanihand.out" 1418100475 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "status-omearastephanihand.tex" 1418100475 29582 310455a9f49918b9743a676f3c78bdd3 ""
   "summary_fig.png" 1418095728 70018 d54434bcddf1f742dade50d91cd73790 ""
   (generated)
-  "status-omearastephanihand.log"
-  "status-omearastephanihand.aux"
-  "status-omearastephanihand.out"
   "status-omearastephanihand.pdf"
+  "status-omearastephanihand.out"
+  "status-omearastephanihand.aux"
+  "status-omearastephanihand.log"

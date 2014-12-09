@@ -35,7 +35,7 @@
 % Employ the following version of the ``usepackage'' statement for
 % submitting the draft version of the paper for review.  This will set
 % the note in the first column to ``Under review.  Do not distribute.''
-\usepackage{icml2014}
+\usepackage[accepted]{icml2014}
 
 
 % The \icmltitle you define below is probably too long as a header.
@@ -45,7 +45,7 @@
 \begin{document}
 
 \twocolumn[
-\icmltitle{Project Report for CIS 419/519\\Stock Recommendations using Machine Learning}
+\icmltitle{Stock Recommendations using Machine Learning}
 
 % It is OKAY to include author information, even for blind
 % submissions: the style file will automatically remove it for you
@@ -64,7 +64,7 @@
 ]
 
 \begin{abstract}
-In this report, we present a simplified stock recommendation system. This system is based on patterns found from the price history of a list of equities. In developing the system, various machine learning techniques were tested to try to predict which stocks should be bought or sold to maximize the percent return going forward. We chose to use naive Bayes, neural networks, and a support vector machines with a gaussian kernel as our main machine learning techniques. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, recall, and percent return of various models.
+In this report, we present a simplified stock recommendation system. This system is based on patterns found from the price history of a list of equities. In developing the system, various machine learning techniques were tested to try to predict which stocks should be bought or sold to maximize the percent return going forward. We chose to use naive Bayes, neural networks, and a support vector machine with a gaussian kernel as our main machine learning techniques. We trained each model on past data through a backtesting module and then presented each model with new data in order to make predictions. In addition, we utilized our module to test several different combinations of features and compared the accuracy, precision, recall, and percent return of various models.
 \end{abstract}
 
 \section{Introduction}
@@ -116,7 +116,7 @@ Some example patterns that our system found are illustrated below with the curre
 \end{figure}
 
 \subsection{Machine learning framework}
-At this point, we've also set up another framework that allows us to easily evaluate different classifiers, different time frames (10 or 100 days), and different features easily. The framework receives the patterns and features from the backtesting module. The framework is designed for handling time-series data and uses a specified number of past days in order to make a trade prediction for a specific day. For instance, if we specified our window to be ten days, the model would have been trained on the past ten days and then utilize that knowledge to predict on the specific day. We then would slide the entire ten day window forward one day and retrain the model in order to predict on the following day. We utilized validation sets in order to find the best features from our dataset. Our framework also utilized grid-search for finding the best-tuned variables for some models. This helped us determine which features, data, and window size to use to train each respective model for the best results.
+We also set up another framework that allows us to easily evaluate different classifiers, different time frames (10 or 100 days), and different features easily. The framework receives the patterns and features from the backtesting module. The framework is designed for handling time-series data and uses a specified number of past days in order to make a trade prediction for a specific day. For instance, if we specified our window to be ten days, the model would have been trained on the past ten days and then utilize that knowledge to predict on the specific day. We then would slide the entire ten day window forward one day and retrain the model in order to predict on the following day. We utilized validation sets in order to find the best features from our dataset. Our framework also utilized grid-search for finding the best-tuned variables for some models. This helped us determine which features, data, and window size to use to train each respective model for the best results.
 
 \subsection{Training and Analysis Overview}
 \begin{figure}[h!]
