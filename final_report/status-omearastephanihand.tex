@@ -126,9 +126,9 @@ At this point, we've also set up another framework that allows us to easily eval
 \end{center}
 \end{figure}
 
-Through the framework, we found that each model had the most success when using the closing price as the sole feature. We did not find any statistically significant differences in a model's predictive power when using data from several decades ago as opposed to data from recent years. We also found negligible returns on our metrics after increasing the window past twenty-one days. We reviewed numerous published papers to verify that these findings were correct and found that many people in quantitative finance were only able to improve their metrics by using many additional features, some of which were not available in WRDS. In addition, many of the features we had pulled were intrinsically related, meaning the features were not independent and did not add to the model's ability to predict well. Therefore, we decided to utilize closing price as our sole feature for evaluating the different models.
+Through the framework, we found that each model had the most success when using the closing price as the sole feature. We did not find any statistically significant differences in a model's predictive power when using data from several decades ago as opposed to data from recent years. We also found negligible returns on our metrics after increasing the window past twenty-one days.
 
-We utilized our machine learning framework to train and analyze the performance of each of the following models: naive bayes, SVM with gaussian kernel, and a neural network. Based on our findings in the above paragraphs, we evaluated each model on the last one-hundred days of 2013. We utilized a twenty-one day window for our analysis of each model.
+We utilized our machine learning framework to train and analyze the performance of each of the following models: naive bayes, SVM with gaussian kernel, and a neural network. Based on our findings in the above paragraphs, we evaluated each model using closing price on the last one-hundred days of 2013. We utilized a twenty-one day window for our analysis of each model.
 
 Our models were evaluated on four specific criteria: accuracy, precision, recall, and the percent return. In addition to those base metrics, we also calculated the percent return as defined above in order to better determine the financial success of our model. For example, our model could predict with a high accuracy, but only on days that produce negligible returns. Therefore, percent return provides a way to verify that our correct predictions are more than just correct, they also need to be profitable. We can determine if our percent return is successful by comparing it with the stock's average actual percent return over the same period. If we outperform the actual average percent return, we consider our model to be successful.
 
@@ -150,7 +150,7 @@ The second machine learning classifier we analyzed was a support vector machine 
 
 On average over the thirty stocks, our svm model predicted the correct trade with an accuracy of 67.97\%. We also averaged a 34.93\% return over the thirty stocks, meaning that we more than doubled the average percent return over the same time frame. It is important to note that the predictions and percent return are based on a simplified model, without factoring in transaction costs. However, these returns are still much higher than average and could be useful for many traders on the stock market.
 
-The results for each of the Dow30 stocks are displayed below.
+The results for each of the Dow30 stocks are displayed to the right in Table 1.
 
 \begin{table}[h!]
   \begin{tabular}{@{}lllllll@{}}
@@ -198,11 +198,11 @@ The svm illustrates empirical success in predicting the correct trade decision f
 \subsection{Neural network}
 The final machine learning classifier we analyzed was a neural network. There were some papers we found analyzing neural network performance, but we mainly decided to try it as many quantitative finance teams in industry utilize neural networks in order to make predictions on current market trends. Faced with this knowledge, we expected the neural network to perform well and outperform the Dow30 average percent return.
 
-Our neural network consisted of three hidden layers and adhered to the Baum-Hassler rule. This rule was developed for financial forecasting with neural networks. The formula output that we should utilize three hidden layers. The same paper also suggested the number of nodes for each layer. The two outer hidden layers should have $2*num input nodes) + 1$ nodes and the middle hidden layer should have $2*num input nodes) - 1$ nodes. As we used twenty-one days for our input, the hidden layer sizes were $<43,41,43>$ respectively. Our neural network was trained on one-hundred epochs, as we only saw negligible improvements when increasing the number of epochs (our model was already converging).
+Our neural network consisted of three hidden layers and adhered to the Baum-Hassler rule. This rule was developed for financial forecasting with neural networks. The formula output that we should utilize three hidden layers. The same paper also suggested the number of nodes for each layer. The two outer hidden layers should have $2*num\_input\_nodes + 1$ nodes and the middle hidden layer should have $2*num\_input\_nodes - 1$ nodes. As we used twenty-one days for our input, the hidden layer sizes were $<43,41,43>$ respectively. Our neural network was trained on one-hundred epochs, as we only saw negligible improvements when increasing the number of epochs (our model was already converging).
 
 On average over the thirty stocks, our neural network performed very well. Our neural network had an average trade prediction accuracy of 68.81\% and an average 34.66\% return. We more than doubled the average return of the Dow30 over the same time period. The results here are slightly more optimistic than they should be, as our model was trained and predicted on a reduced stock model with a fixed transaction costs. However, the model still performs very well and would definitely prove very helpful for traders looking for an edge.
 
-The results for the neural network on all thirty stocks are printed below.
+The results for the neural network on all thirty stocks are printed on the following page in Table 2.
 
 \begin{table}[h!]
   \begin{tabular}{@{}lllllll@{}}
