@@ -1,46 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2013)
+This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: status-omearastephanihand.aux
 The style file: icml2014.bst
 Database file #1: status-omearastephanihand.bib
-You've used 5 entries,
+Warning--empty year in yaotan
+Warning--empty year in yaotan
+Warning--empty year in zhang
+Warning--empty year in zhang
+You've used 6 entries,
             2773 wiz_defined-function locations,
-            612 strings with 5426 characters,
-and the built_in function-call counts, 1413 in all, are:
-= -- 135
-> -- 50
-< -- 5
-+ -- 20
-- -- 15
-* -- 72
-:= -- 260
-add.period$ -- 15
-call.type$ -- 5
-change.case$ -- 25
-chr.to.int$ -- 5
-cite$ -- 10
-duplicate$ -- 75
-empty$ -- 116
-format.name$ -- 20
-if$ -- 276
+            618 strings with 5578 characters,
+and the built_in function-call counts, 1697 in all, are:
+= -- 160
+> -- 60
+< -- 6
++ -- 24
+- -- 18
+* -- 92
+:= -- 308
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 30
+chr.to.int$ -- 6
+cite$ -- 16
+duplicate$ -- 90
+empty$ -- 139
+format.name$ -- 24
+if$ -- 329
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 33
-num.names$ -- 20
-pop$ -- 30
+newline$ -- 38
+num.names$ -- 24
+pop$ -- 44
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 18
 quote$ -- 0
-skip$ -- 56
+skip$ -- 61
 stack$ -- 0
-substring$ -- 10
+substring$ -- 12
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 55
-warning$ -- 0
-while$ -- 15
+type$ -- 66
+warning$ -- 4
+while$ -- 18
 width$ -- 0
-write$ -- 72
+write$ -- 83
+(There were 4 warnings)
